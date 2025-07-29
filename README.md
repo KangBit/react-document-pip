@@ -1,69 +1,100 @@
-# React + TypeScript + Vite
+# React Document Picture-in-Picture
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React component library for creating Picture-in-Picture windows using the Document Picture-in-Picture API.
 
-Currently, two official plugins are available:
+![React PIP Demo](./demo.gif)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Browser Support
 
-## Expanding the ESLint configuration
+- This feature may not work in some browsers. Browser compatibility can be checked at [CanIUse](https://caniuse.com/mdn-api_documentpictureinpicture).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- This feature is only available in [Secure Contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) (HTTPS or localhost).
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install react-document-pip
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Basic Example
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```tsx
+import { useState } from "react";
+import DocumentPip from "@/components/DocumentPip";
+
+function App() {
+  const [isPipOpen, setIsPipOpen] = useState(false);
+
+  const togglePip = () => {
+    setIsPipOpen(!isPipOpen);
+  };
+
+  const handleClose = () => {
+    setIsPipOpen(false);
+  };
+
+  return (
+    <>
+      <DocumentPip
+        isPipOpen={isPipOpen}
+        size={{ width: 500, height: 400 }}
+        onClose={handleClose}
+      >
+        <MyComponent />
+      </DocumentPip>
+      <button onClick={togglePip}>Toggle PIP</button>
+    </>
+  );
+}
 ```
+
+## API Reference
+
+### DocumentPIP Props
+
+| Prop                           | Type                     | Default      | Description                                                                      |
+| ------------------------------ | ------------------------ | ------------ | -------------------------------------------------------------------------------- |
+| `children`                     | `React.ReactNode`        | -            | The content to display in the PIP window                                         |
+| `isPipOpen`                    | `boolean`                | -            | Controls whether the PIP window is open                                          |
+| `size`                         | `Partial<PIPWindowSize>` | -            | Size of the PIP window                                                           |
+| `mode`                         | `'clone' \| 'transfer'`  | `'transfer'` | Content display mode<br>`clone`: keep original + copy<br>`transfer`: move to PIP |
+| `copyAllStyles`                | `boolean`                | `true`       | Whether to copy all styles to PIP window                                         |
+| `disallowReturnToOpener`       | `boolean`                | `false`      | Whether to disallow returning to the opener window                               |
+| `preferInitialWindowPlacement` | `boolean`                | `false`      | Whether to prefer initial window placement                                       |
+| `onClose`                      | `() => void`             | -            | Callback function when the PIP window is closed                                  |
+
+### Types
+
+```typescript
+interface PIPWindowSize {
+  width: number;
+  height: number;
+}
+
+type PIPMode = "clone" | "transfer";
+
+interface DocumentPIPProps {
+  children: React.ReactNode;
+  isPipOpen: boolean;
+  size?: Partial<PIPWindowSize>;
+  mode?: PIPMode;
+  copyAllStyles?: boolean;
+  disallowReturnToOpener?: boolean;
+  preferInitialWindowPlacement?: boolean;
+  onClose: () => void;
+}
+```
+
+## Browser Support
+
+This library uses the [Document Picture-in-Picture API](https://developer.chrome.com/docs/web-platform/document-picture-in-picture/), which is currently supported in:
+
+- Chrome 116+
+- Edge 116+
+- Opera 102+
+
+## License
+
+MIT
