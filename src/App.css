@@ -4,3 +4,19 @@
   padding: 2rem;
   text-align: center;
 }
+
+#pip-root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.pip-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: orange;
+}
