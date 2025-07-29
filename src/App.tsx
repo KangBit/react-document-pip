@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 
-import DocumentPip from "@/components/DocumentPip";
+import DocumentPip from "@/components/DocumentPIP";
 import PIPContent from "@/components/PIPContent";
 
 function App() {
