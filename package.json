@@ -1,17 +1,37 @@
 {
+  "version": "0.0.5",
+  "author": "KangBit",
+  "license": "MIT",
   "name": "react-document-pip",
-  "private": true,
-  "version": "0.0.0",
+  "description": "This is a simple utility package for document picture in picture",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KangBit/react-document-pip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KangBit/react-document-pip/issues"
+  },
+  "keywords": [
+    "react-pip",
+    "react-document-pip",
+    "react document pip",
+    "pip",
+    "document pip",
+    "picture in picture"
+  ],
+  "homepage": "https://kangbit.github.io/posts/document-pip/react.html",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:clean": "rm -rf dist && npm run build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build:clean"
   },
-  "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
@@ -25,6 +45,22 @@
     "globals": "^16.3.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
-    "vite": "^7.0.4"
-  }
+    "vite": "^7.0.4",
+    "vite-plugin-dts": "^4.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ]
 }
