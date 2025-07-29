@@ -22,7 +22,7 @@ npm install react-document-pip
 
 ```tsx
 import { useState } from "react";
-import DocumentPip from "@/components/DocumentPip";
+import DocumentPip from "react-document-pip";
 
 function App() {
   const [isPipOpen, setIsPipOpen] = useState(false);
