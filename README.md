@@ -58,16 +58,16 @@ function App() {
 
 ### DocumentPIP Props
 
-| Prop                           | Type                     | Default      | Description                                                                      |
-| ------------------------------ | ------------------------ | ------------ | -------------------------------------------------------------------------------- |
-| `children`                     | `React.ReactNode`        | -            | The content to display in the PIP window                                         |
-| `isPipOpen`                    | `boolean`                | -            | Controls whether the PIP window is open                                          |
-| `size`                         | `Partial<PIPWindowSize>` | -            | Size of the PIP window                                                           |
-| `mode`                         | `'clone' \| 'transfer'`  | `'transfer'` | Content display mode<br>`clone`: keep original + copy<br>`transfer`: move to PIP |
-| `copyAllStyles`                | `boolean`                | `true`       | Whether to copy all styles to PIP window                                         |
-| `disallowReturnToOpener`       | `boolean`                | `false`      | Whether to disallow returning to the opener window                               |
-| `preferInitialWindowPlacement` | `boolean`                | `false`      | Whether to prefer initial window placement                                       |
-| `onClose`                      | `() => void`             | -            | Callback function when the PIP window is closed                                  |
+| Prop                           | Type                                       | Default      | Description                                                                                                                       |
+| ------------------------------ | ------------------------------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `children`                     | `React.ReactNode`                          | -            | The content to display in the PIP window                                                                                          |
+| `isPipOpen`                    | `boolean`                                  | -            | Controls whether the PIP window is open                                                                                           |
+| `size`                         | `Partial<PIPWindowSize>`                   | -            | Size of the PIP window                                                                                                            |
+| `mode`                         | `'clone' \| 'transfer' \| 'transfer-only'` | `'transfer'` | Content display mode<br>`clone`: keep original + copy<br>`transfer`: move to PIP<br>`transfer-only`: move to PIP without original |
+| `copyAllStyles`                | `boolean`                                  | `true`       | Whether to copy all styles to PIP window                                                                                          |
+| `disallowReturnToOpener`       | `boolean`                                  | `false`      | Whether to disallow returning to the opener window                                                                                |
+| `preferInitialWindowPlacement` | `boolean`                                  | `false`      | Whether to prefer initial window placement                                                                                        |
+| `onClose`                      | `() => void`                               | -            | Callback function when the PIP window is closed                                                                                   |
 
 ### Types
 

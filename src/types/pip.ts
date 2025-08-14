@@ -1,4 +1,4 @@
-export type PIPMode = "clone" | "transfer";
+export type PIPMode = "clone" | "transfer" | "transfer-only";
 export type PIPWindowSize = { width: number; height: number };
 
 export type DocumentPIPProps = {
