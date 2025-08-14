@@ -88,7 +88,7 @@ interface DocumentPIPProps {
   copyAllStyles?: boolean;
   disallowReturnToOpener?: boolean;
   preferInitialWindowPlacement?: boolean;
-  onEnter?: () => void;
+  onEnter?: (e: DocumentPictureInPictureEvent) => void;
   onClose: () => void;
 }
 ```

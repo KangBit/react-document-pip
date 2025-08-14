@@ -46,6 +46,12 @@ export default function DocumentPIP({
   };
 
   const openPIPWindow = async () => {
+    window.documentPictureInPicture.addEventListener(
+      "enter",
+      onEnterPIPWindow as EventListener,
+      { once: true }
+    );
+
     const pip = await window.documentPictureInPicture.requestWindow({
       width: size?.width || 0,
       height: size?.height || 0,
@@ -61,7 +67,6 @@ export default function DocumentPIP({
     root.id = "pip-root";
     pip.document.body.appendChild(root);
 
-    pip.addEventListener("enter", onEnterPIPWindow, { once: true });
     pip.addEventListener("pagehide", onClosePIPWindow, { once: true });
 
     setPipWindow(pip);
@@ -76,7 +81,7 @@ export default function DocumentPIP({
     setPipWindow(null);
   };
 
-  const onEnterPIPWindow = (e: Event) => {
+  const onEnterPIPWindow = (e: DocumentPictureInPictureEvent) => {
     onEnter?.(e);
   };
 
