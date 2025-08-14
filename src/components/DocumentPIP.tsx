@@ -4,7 +4,8 @@ import copyStyles from "@/utils/copyStyles";
 
 import type { DocumentPIPProps } from "@/types/pip";
 
-const isPIPSupported = "documentPictureInPicture" in window;
+const isPIPSupported =
+  typeof window !== "undefined" && "documentPictureInPicture" in window;
 
 export default function DocumentPIP({
   children,
