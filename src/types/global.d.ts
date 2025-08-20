@@ -14,6 +14,13 @@ interface Window {
   };
 }
 
+interface Navigator {
+  userAgentData: {
+    brands: { brand: string }[];
+    platform: string;
+  };
+}
+
 interface DocumentPictureInPictureEvent extends Event {
   window: Window;
 }
