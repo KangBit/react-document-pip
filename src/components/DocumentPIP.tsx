@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
 import { getOS } from "@/utils/common";
 import copyStyles from "@/utils/copyStyles";
@@ -8,18 +8,24 @@ import type { DocumentPIPProps } from "@/types/pip";
 const isPIPSupported =
   typeof window !== "undefined" && "documentPictureInPicture" in window;
 
-export default function DocumentPIP({
-  children,
-  isPipOpen,
-  size,
-  mode = "transfer",
-  copyAllStyles = true,
-  disallowReturnToOpener = false,
-  preferInitialWindowPlacement = false,
-  onEnter,
-  onClose,
-}: DocumentPIPProps) {
+export default forwardRef(function DocumentPIP(
+  {
+    children,
+    isPipOpen,
+    size,
+    mode = "transfer",
+    copyAllStyles = true,
+    disallowReturnToOpener = false,
+    preferInitialWindowPlacement = false,
+    onEnter,
+    onClose,
+  }: DocumentPIPProps,
+  ref
+) {
   const [pipWindow, setPipWindow] = useState<Window | null>(null);
+
+  // Expose pipWindow to the parent component
+  useImperativeHandle(ref, () => pipWindow, [pipWindow]);
 
   // Effects
   useEffect(() => {
@@ -127,4 +133,4 @@ export default function DocumentPIP({
   };
 
   return pipContent();
-}
+});

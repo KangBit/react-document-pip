@@ -1,16 +1,18 @@
 import "./App.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import DocumentPip from "@/components/DocumentPIP";
 import PIPContent from "@/components/PIPContent";
 
 function App() {
   const [isPipOpen, setIsPipOpen] = useState(false);
+  const pipWindowRef = useRef<Window | null>(null);
 
   return (
     <>
       <div style={{ width: "500px", height: "200px" }}>
         <DocumentPip
+          ref={pipWindowRef}
           isPipOpen={isPipOpen}
           onClose={() => setIsPipOpen(false)}
           size={{ width: 500, height: 200 }}
