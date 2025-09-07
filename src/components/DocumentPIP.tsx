@@ -17,6 +17,7 @@ export default forwardRef(function DocumentPIP(
     copyAllStyles = true,
     disallowReturnToOpener = false,
     preferInitialWindowPlacement = false,
+    className = "",
     onEnter,
     onClose,
   }: DocumentPIPProps,
@@ -80,6 +81,13 @@ export default forwardRef(function DocumentPIP(
 
     if (copyAllStyles) {
       copyStyles(pip);
+    }
+
+    const classList = className.split(" ").filter((str) => {
+      return str.length > 0;
+    });
+    if (classList.length > 0) {
+      pip.document.documentElement.classList.add(...className.split(" "));
     }
 
     const root = pip.document.createElement("div");
