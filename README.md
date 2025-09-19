@@ -29,7 +29,6 @@ import { useState } from "react";
 import DocumentPip from "react-document-pip";
 
 function App() {
-  const pipWindowRef = useRef<Window | null>(null);
   const [isPipOpen, setIsPipOpen] = useState(false);
 
   const togglePip = () => {
@@ -43,13 +42,43 @@ function App() {
   return (
     <>
       <DocumentPip
-        ref={pipWindowRef}
         isPipOpen={isPipOpen}
         size={{ width: 500, height: 400 }}
         className="dark"
         onClose={handleClose}
       >
         <MyComponent />
+      </DocumentPip>
+      <button onClick={togglePip}>Toggle PIP</button>
+    </>
+  );
+}
+```
+
+### Using Window Methods Or Web APIs in PIP window
+
+```tsx
+// ...
+
+const pipWindowRef = useRef<Window | null>(null);
+
+const onClickButton = () => {
+  pipWindowRef.current?.alert("alert in pip window");
+};
+
+function App() {
+  return (
+    <>
+      <DocumentPip
+        mode="transfer-only"
+        ref={pipWindowRef}
+        isPipOpen={isPipOpen}
+        onClose={handleClose}
+      >
+        <div className="pip-content">
+          <h1>PIPContent</h1>
+          <button onClick={onClickButton}>BUTTON</button>
+        </div>
       </DocumentPip>
       <button onClick={togglePip}>Toggle PIP</button>
     </>
