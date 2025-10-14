@@ -10,10 +10,6 @@ A React component library for creating Picture-in-Picture windows using the Docu
 
 - This feature is only available in [Secure Contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) (HTTPS or localhost).
 
-## Styled Components not supported
-
-If you need styled-components support, please use **[react-styled-pip](https://www.npmjs.com/package/react-styled-pip)** instead.
-
 ## Installation
 
 ```bash
@@ -141,9 +137,10 @@ This library uses the [Document Picture-in-Picture API](https://developer.chrome
 - Edge 116+
 - Opera 102+
 
+## Styled Components not supported
+
 ## Related Packages
 
-- [react-styled-pip](https://www.npmjs.com/package/react-styled-pip) - React version with styled-components support
 - [vue-pip](https://www.npmjs.com/package/vue-pip) - Vue version of Document Picture-in-Picture
 
 ## License
