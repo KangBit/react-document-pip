@@ -143,6 +143,10 @@ This library uses the [Document Picture-in-Picture API](https://developer.chrome
 
 - [vue-pip](https://www.npmjs.com/package/vue-pip) - Vue version of Document Picture-in-Picture
 
+## Projects using this package
+
+- [pip-tools](https://pip-tools.com/) - Use handy tools that always stay on top of other windows!
+
 ## License
 
 MIT
