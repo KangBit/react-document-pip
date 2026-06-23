@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { getOS } from "@/utils/common";
 import copyStyles from "@/utils/copyStyles";
 
-import type { DocumentPIPProps } from "@/types/pip";
+import type { DocumentPIPProps, DocumentPictureInPictureEvent } from "@/types/pip";
 
 const isPIPSupported =
   typeof window !== "undefined" && "documentPictureInPicture" in window;

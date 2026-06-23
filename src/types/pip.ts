@@ -1,6 +1,10 @@
 export type PIPMode = "clone" | "transfer" | "transfer-only";
 export type PIPWindowSize = { width: number; height: number };
 
+export interface DocumentPictureInPictureEvent extends Event {
+  window: Window;
+}
+
 export type DocumentPIPProps = {
   children: React.ReactNode;
   isPipOpen: boolean;

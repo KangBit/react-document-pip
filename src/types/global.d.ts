@@ -20,7 +20,3 @@ interface Navigator {
     platform: string;
   };
 }
-
-interface DocumentPictureInPictureEvent extends Event {
-  window: Window;
-}
